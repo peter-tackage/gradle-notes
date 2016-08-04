@@ -1,3 +1,23 @@
+# Groovy definitions
+
+This is possible, due to dynamic typing:
+```groovy
+def aThing = "aThingString"
+aThing = 7
+```
+
+Lists:
+```groovy
+def myList = ["a", "b", "c"]
+myList.map(it -> it + "1")
+```
+
+You can use `$` to reference outside variables from inside a `String` definition:
+```groovy 
+def number = 7
+println("This is my favorite number: $number")
+```
+
 # Groovy closures
 
 ```groovy
@@ -8,9 +28,15 @@ def myClosure = {
 myClosure() // invocation
 ```
 
+You can also use `it` to reference the single parameter:
+```groovy
+def myList = ["a", "b", "c"]
+myList.foreach(println(it))
+```
+
 # Gradle tasks
 
-`task` is a method on the delegated, globally visible `project`. It creates tasks, given their name and closure.
+`task` is a method on the delegated, globally visible `project` object. It creates tasks, given their name and closure.
 
 ```groovy
 project.task("myGreatTask") {
@@ -19,8 +45,7 @@ project.task("myGreatTask") {
 }
 ```
 
-Because the project object is delegarted everywhere, this can also be shortened to be written as:
-
+Because the project object is delegated everywhere, this can also be shortened to be written as:
 ```groovy
 task("myGreatTask") {
     // Task def goes here
@@ -36,7 +61,6 @@ task "myGreatTask" {
 ```
 
 or even: 
-
 ```groovy 
 task myGreatTask {
     // Task def goes here
@@ -44,7 +68,6 @@ task myGreatTask {
 ```
 
 Tasks have various properties/methods defined in them:
-
 ```groovy
 task myGreatTask {
     doLast {
