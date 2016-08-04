@@ -50,6 +50,9 @@ task myGreatTask {
     doLast {
         println("Just about the last thing")
     }
+    doFirst {
+        println("This will be run first")
+    }
 }
 ```
 
@@ -59,5 +62,17 @@ This syntax allows you to define really simple tasks:
 task myShortTask << { println("A short task")}
 ```
 
-The `<<` operator means "really last". So this will be the last thing the task will do.
+The `<<` (left-shift) operator means "really last". So this will be the last thing the task will do.
 
+You can also set a number of properties on tasks to determine how they listed when running the gradle command:
+```
+> gradle tasks
+```
+
+For example:
+```groovy
+task task1 {
+    group 'Example'
+    description 'A longer description of the task'
+}
+```
