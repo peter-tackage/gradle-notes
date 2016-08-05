@@ -9,7 +9,7 @@ aThing = 7
 Lists:
 ```groovy
 def myList = ["a", "b", "c"]
-myList.map(it -> it + "1")
+myList.map{it -> it + "1"}
 ```
 
 You can use `$` to reference outside variables from inside a `String` definition:
